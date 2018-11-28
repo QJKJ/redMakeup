@@ -26,73 +26,6 @@ import CommonCell from './XMGBottomCommonCell';
 import Home_D5 from '../../LocalData/XMG_Home_D5.json';
 
 
-import ShopCenterItem from './XMGShopCenterItem';
-
-
-export default class ShopCenter extends Component{
-    getDefaultProps(){
-        // 回调函数
-        return{
-            popToHomeView: null
-        }
-    };
-
-    render() {
-        return (
-            <View style={styles.container}>
-                {/*上部分*/}
-                <CommonCell
-                    leftIcon="gw"
-                    leftTitle="购物中心"
-                    rightTitle={Home_D5.tips}
-                />
-                {/*下部分*/}
-                <ScrollView
-                    style={styles.scrollViewStyle}
-                    horizontal={true} // 横向
-                    showsHorizontalScrollIndicator={false}
-                >
-                    {this.renderAllItem()}
-                </ScrollView>
-            </View>
-        );
-    };
-
-    // 返回下部分所有的Item
-    renderAllItem(){
-        // 定义组件数组
-        var itemArr = [];
-        // 取出数据
-        var shopData= Home_D5.data;
-        // 遍历
-        for (var i=0; i<shopData.length; i++){
-            // 取出单个数据
-            var data = shopData[i];
-            // 创建组件装入数组
-            itemArr.push(
-                <ShopCenterItem
-                    shopImage = {data.img}
-                    shopSale = {data.showtext.text}
-                    shopName = {data.name}
-                    detailurl = {data.detailurl}
-                    key={i}
-                    popTopShopCenter = {(url)=>this.popTopHome(url)}
-                />
-            );
-        }
-        // 返回
-        return itemArr;
-    };
-
-    popTopHome(url){
-        // 判断
-        if (this.props.popToHomeView == null) return;
-
-        // 执行回调函数
-        this.props.popToHomeView(url);
-    }
-}
-
 // 每一个商场
 /*var ShopCenterItem = React.createClass({
     getDefaultProps(){
@@ -127,7 +60,7 @@ export default class ShopCenter extends Component{
 }*/
 
 
-/*export default class ShopCenterItem extends Component{
+export default class ShopCenterItem extends Component{
     getDefaultProps(){
         return{
             shopImage: '',
@@ -157,7 +90,7 @@ export default class ShopCenter extends Component{
         // 执行回调函数
         this.props.popTopShopCenter(url);
     }
-}*/
+}
 
 
 

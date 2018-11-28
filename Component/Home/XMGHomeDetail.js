@@ -13,7 +13,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-var HomeDetail = React.createClass({
+/*var HomeDetail = React.createClass({
     render() {
         return (
             <View style={styles.container}>
@@ -29,7 +29,26 @@ var HomeDetail = React.createClass({
     popTopHome(){
         this.props.navigator.pop();
     }
-});
+});*/
+
+
+export default class HomeDetail extends Component{
+    render() {
+        return (
+            <View style={styles.container}>
+                <TouchableOpacity onPress={()=>{this.popTopHome()}}>
+                    <Text style={styles.welcome}>
+                        测试跳转
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        );
+    };
+
+    popTopHome(){
+        this.props.navigator.pop();
+    }
+}
 
 
 const styles = StyleSheet.create({
@@ -47,4 +66,8 @@ const styles = StyleSheet.create({
 });
 
 // 输出组件类
-module.exports = HomeDetail;
+/*module.exports = HomeDetail;*/
+
+
+
+

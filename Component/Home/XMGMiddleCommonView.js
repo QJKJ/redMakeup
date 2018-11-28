@@ -11,15 +11,57 @@ import {
     Text,
     View,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Dimensions
 } from 'react-native';
 
-var Dimensions = require('Dimensions');
+/*var Dimensions = require('Dimensions');*/
 var {width} = Dimensions.get('window');
 
 // 引入外部的组件类
-var HomeDetail = require('./XMGHomeDetail');
+import HomeDetail from './XMGHomeDetail';
+/*var HomeDetail = require('./XMGHomeDetail');*/
 
+export default class CommonView extends Component{
+    getDefaultProps(){
+        return{
+            title:'',
+            subTitle: '',
+            rightIcon: '',
+            titleColor: '',
+            tplurl: '', //下级界面的URL路径
+            // 回调函数
+            callBackClickCell: null
+        }
+    };
+
+    render() {
+        return (
+            <TouchableOpacity onPress={()=>this.clickCell(this.props.tplurl)}>
+                <View style={styles.container}>
+                    {/*左边*/}
+                    <View>
+                        <Text style={[{color:this.props.titleColor}, styles.titleStyle]}>{this.props.title}</Text>
+                        <Text style={styles.subTitleStyle}>{this.props.subTitle}</Text>
+                    </View>
+                    {/*右边*/}
+                    <Image source={{uri: this.props.rightIcon}} style={{width:64,height:43, resizeMode:'contain'}}/>
+                </View>
+            </TouchableOpacity>
+        );
+    };
+
+    // 点击了cell
+    clickCell(data){
+        // 判断处理
+        if (this.props.callBackClickCell == null) return;
+        // 执行回调函数
+        this.props.callBackClickCell(data);
+    }
+}
+
+
+/*
 var CommonView = React.createClass({
     getDefaultProps(){
         return{
@@ -37,12 +79,12 @@ var CommonView = React.createClass({
         return (
           <TouchableOpacity onPress={()=>this.clickCell(this.props.tplurl)}>
             <View style={styles.container}>
-                {/*左边*/}
+                {/!*左边*!/}
                 <View>
                     <Text style={[{color:this.props.titleColor}, styles.titleStyle]}>{this.props.title}</Text>
                     <Text style={styles.subTitleStyle}>{this.props.subTitle}</Text>
                 </View>
-                {/*右边*/}
+                {/!*右边*!/}
                 <Image source={{uri: this.props.rightIcon}} style={{width:64,height:43, resizeMode:'contain'}}/>
             </View>
           </TouchableOpacity>
@@ -57,6 +99,7 @@ var CommonView = React.createClass({
        this.props.callBackClickCell(data);
     }
 });
+*/
 
 
 const styles = StyleSheet.create({
@@ -85,4 +128,4 @@ const styles = StyleSheet.create({
 });
 
 // 输出组件类
-module.exports = CommonView;
+//module.exports = CommonView;

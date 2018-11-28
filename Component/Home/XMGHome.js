@@ -14,22 +14,38 @@ import {
     TextInput,
     Image,
     Platform,
-    ScrollView
+    ScrollView,
+    Dimensions
 } from 'react-native';
 
-var Dimensions = require('Dimensions');
+
+
+//var Dimensions = require('Dimensions');
+
 var {width, height} = Dimensions.get('window');
 
 /**----导入外部的组件类---**/
-var HomeDetail = require('./XMGHomeDetail');
+/*var HomeDetail = require('./XMGHomeDetail');
 var TopView = require('./XMGTopView');
 var MiddleView = require('./XMGHomeMiddleView');
 var MiddleBottomView = require('./XMGMiddleBottomView');
 var ShopCenter = require('./XMGShopCenter');
 var ShopCenterDetail = require('./XMGShopCenterDetail');
-var GeustYouLike = require('./XMGGeustYouLike');
+var GeustYouLike = require('./XMGGeustYouLike');*/
 
-var Home = React.createClass({
+
+
+
+import HomeDetail from './XMGHomeDetail';
+import TopView from './XMGTopView';
+import MiddleView from './XMGHomeMiddleView';
+import MiddleBottomView from './XMGMiddleBottomView';
+import ShopCenter from './XMGShopCenter';
+import ShopCenterDetail from './XMGShopCenterDetail';
+import GeustYouLike from './XMGGeustYouLike';
+
+
+export default class Home extends Component{
     render() {
         return (
             <View style={styles.container}>
@@ -52,6 +68,92 @@ var Home = React.createClass({
 
                     {/*猜你喜欢*/}
                     <GeustYouLike />
+
+                </ScrollView>
+            </View>
+        );
+    };
+
+    // 首页的导航条
+    renderNavBar(){
+        return(
+            <View style={styles.navBarStyle}>
+                {/*左边*/}
+                <TouchableOpacity onPress={()=>{this.pushToDetail()}}>
+                    <Text style={{color:'white'}}>广州</Text>
+                </TouchableOpacity>
+                {/*中间*/}
+                <TextInput
+                    placeholder="输入商家, 品类, 商圈"
+                    style={styles.topInputStyle}
+                />
+                {/*右边*/}
+                <View style={styles.rightNavViewStyle}>
+                    <TouchableOpacity onPress={()=>{alert('点击了')}}>
+                        <Image source={{uri:'icon_homepage_message'}} style={styles.navRightImgStyle}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{alert('点击了')}}>
+                        <Image source={{uri:'icon_homepage_scan'}} style={styles.navRightImgStyle} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    };
+
+    // 跳转到购物中心详情页
+    pushToShopCenterDetail(url){
+        this.props.navigator.push(
+            {
+                component: ShopCenterDetail, // 要跳转的版块
+                passProps: {'url': this.dealWithUrl(url)}
+            }
+        );
+    };
+
+    // 处理URL
+    dealWithUrl(url){
+        return url.replace('imeituan://www.meituan.com/web/?url=', '');
+    };
+
+
+    // 跳转到二级界面
+    pushToDetail(data){
+
+        // alert(data);
+
+        this.props.navigator.push(
+            {
+                component: HomeDetail, // 要跳转的版块
+                title:'详情页'
+            }
+        );
+    }
+}
+
+
+/*var Home = React.createClass({
+    render() {
+        return (
+            <View style={styles.container}>
+                {/!*首页的导航条*!/}
+                {this.renderNavBar()}
+                {/!*首页的主要内容*!/}
+                <ScrollView>
+                    {/!*头部的View*!/}
+                    <TopView />
+                    {/!*中间的内容*!/}
+                    <MiddleView />
+                    {/!*中间下半部分的内容*!/}
+                    <MiddleBottomView
+                        popTopHome={(data)=>{this.pushToDetail(data)}}
+                    />
+                    {/!*购物中心*!/}
+                    <ShopCenter
+                        popToHomeView = {(url) => this.pushToShopCenterDetail(url)}
+                    />
+
+                    {/!*猜你喜欢*!/}
+                    <GeustYouLike />
                     
                 </ScrollView>
             </View>
@@ -62,16 +164,16 @@ var Home = React.createClass({
     renderNavBar(){
         return(
             <View style={styles.navBarStyle}>
-                {/*左边*/}
+                {/!*左边*!/}
                 <TouchableOpacity onPress={()=>{this.pushToDetail()}}>
                   <Text style={{color:'white'}}>广州</Text>
                 </TouchableOpacity>
-                {/*中间*/}
+                {/!*中间*!/}
                 <TextInput
                   placeholder="输入商家, 品类, 商圈"
                   style={styles.topInputStyle}
                 />
-                {/*右边*/}
+                {/!*右边*!/}
                 <View style={styles.rightNavViewStyle}>
                     <TouchableOpacity onPress={()=>{alert('点击了')}}>
                         <Image source={{uri:'icon_homepage_message'}} style={styles.navRightImgStyle}/>
@@ -112,7 +214,7 @@ var Home = React.createClass({
            }
        );
     }
-});
+});*/
 
 
 const styles = StyleSheet.create({
@@ -167,4 +269,4 @@ const styles = StyleSheet.create({
 });
 
 // 输出组件类
-module.exports = Home;
+//module.exports = Home;

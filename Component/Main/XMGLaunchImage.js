@@ -16,6 +16,7 @@ import {
 /**----导入外部的组件----**/
 //var Main = require('./XMGMain');
 
+import Main from './XMGMain';
 
 
 
@@ -27,7 +28,7 @@ export default class Launch extends Component{
     };
 
     // 复杂的操作:定时器\网络请求
-/*    componentDidMount(){
+   componentDidMount(){
         // 定时: 隔2s切换到Main
         setTimeout(()=>{
             // 页面的切换
@@ -35,7 +36,7 @@ export default class Launch extends Component{
              component: Main, // 具体路由的版块
              });
         }, 1500);
-    }*/
+    }
 }
 
 

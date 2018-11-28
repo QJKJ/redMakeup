@@ -14,7 +14,37 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-var BottomCommonCell = React.createClass({
+export default class BottomCommonCell extends Component{
+    getDefaultProps(){
+        return{
+            leftIcon: '',
+            leftTitle: '',
+            rightTitle: ''
+        }
+    };
+
+    render() {
+        return (
+            <TouchableOpacity onPress={()=>alert('点了')}>
+                <View style={styles.container}>
+                    {/*左边*/}
+                    <View style={styles.leftViewStyle}>
+                        <Image source={{uri: this.props.leftIcon}} style={{width:23, height:23, marginRight:5}}/>
+                        <Text style={{fontSize:17}}>{this.props.leftTitle}</Text>
+                    </View>
+                    {/*右边*/}
+                    <View style={styles.rightViewStyle}>
+                        <Text style={{color:'gray'}}>{this.props.rightTitle}</Text>
+                        <Image source={{uri: 'icon_cell_rightArrow'}} style={{width:8, height:13, marginRight:8, marginLeft:5}}/>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
+
+
+/*var BottomCommonCell = React.createClass({
     getDefaultProps(){
        return{
            leftIcon: '',
@@ -27,12 +57,12 @@ var BottomCommonCell = React.createClass({
         return (
           <TouchableOpacity onPress={()=>alert('点了')}>
             <View style={styles.container}>
-                {/*左边*/}
+                {/!*左边*!/}
                 <View style={styles.leftViewStyle}>
                    <Image source={{uri: this.props.leftIcon}} style={{width:23, height:23, marginRight:5}}/>
                    <Text style={{fontSize:17}}>{this.props.leftTitle}</Text>
                 </View>
-                {/*右边*/}
+                {/!*右边*!/}
                 <View style={styles.rightViewStyle}>
                     <Text style={{color:'gray'}}>{this.props.rightTitle}</Text>
                     <Image source={{uri: 'icon_cell_rightArrow'}} style={{width:8, height:13, marginRight:8, marginLeft:5}}/>
@@ -41,7 +71,7 @@ var BottomCommonCell = React.createClass({
           </TouchableOpacity>
         );
     }
-});
+});*/
 
 
 const styles = StyleSheet.create({
@@ -76,4 +106,4 @@ const styles = StyleSheet.create({
 });
 
 // 输出组件类
-module.exports = BottomCommonCell;
+//module.exports = BottomCommonCell;
