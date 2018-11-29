@@ -61,7 +61,7 @@ import Home_D5 from '../../LocalData/XMG_Home_D5.json';
 
 
 export default class ShopCenterItem extends Component{
-    getDefaultProps(){
+/*    getDefaultProps(){
         return{
             shopImage: '',
             shopSale:'',
@@ -69,7 +69,15 @@ export default class ShopCenterItem extends Component{
             detailurl: '',
             popTopShopCenter: null
         }
-    };
+    };*/
+
+    static defaultProps={
+        shopImage: '',
+        shopSale:'',
+        shopName: '',
+        detailurl: '',
+        popTopShopCenter: null
+    }
 
     render(){
         return(

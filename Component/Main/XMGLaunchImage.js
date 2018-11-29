@@ -18,9 +18,9 @@ import {
 
 import Main from './XMGMain';
 
+type Props = {};
 
-
-export default class Launch extends Component{
+export default class Launch extends Component<Props> {
     render() {
         return (
             <Image source={{uri: 'launchimage'}} style={styles.launchImageStyle}/>
@@ -32,7 +32,7 @@ export default class Launch extends Component{
         // 定时: 隔2s切换到Main
         setTimeout(()=>{
             // 页面的切换
-                        this.props.navigator.replace({
+            this.props.navigator.replace({
              component: Main, // 具体路由的版块
              });
         }, 1500);

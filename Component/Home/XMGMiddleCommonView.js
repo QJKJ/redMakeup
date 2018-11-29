@@ -23,7 +23,7 @@ import HomeDetail from './XMGHomeDetail';
 /*var HomeDetail = require('./XMGHomeDetail');*/
 
 export default class CommonView extends Component{
-    getDefaultProps(){
+/*    getDefaultProps(){
         return{
             title:'',
             subTitle: '',
@@ -33,7 +33,17 @@ export default class CommonView extends Component{
             // 回调函数
             callBackClickCell: null
         }
-    };
+    };*/
+
+    static defaultProps={
+        title:'',
+        subTitle: '',
+        rightIcon: '',
+        titleColor: '',
+        tplurl: '', //下级界面的URL路径
+        // 回调函数
+        callBackClickCell: null
+    }
 
     render() {
         return (

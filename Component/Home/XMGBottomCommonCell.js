@@ -15,13 +15,19 @@ import {
 } from 'react-native';
 
 export default class BottomCommonCell extends Component{
-    getDefaultProps(){
+/*    getDefaultProps(){
         return{
             leftIcon: '',
             leftTitle: '',
             rightTitle: ''
         }
-    };
+    };*/
+
+    static defaultProps={
+        leftIcon: '',
+        leftTitle: '',
+        rightTitle: ''
+    }
 
     render() {
         return (

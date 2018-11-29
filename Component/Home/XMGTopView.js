@@ -32,11 +32,16 @@ import TopListView from './XMGTopListView';
 
 
 export default class TopView extends Component{
-    getInitialState(){
+/*    getInitialState(){
         return{
             activePage: 0
         }
-    };
+    };*/
+
+    constructor(props) {
+        super(props);
+        this.state = { activePage: 0 };
+    }
 
     render() {
         return (

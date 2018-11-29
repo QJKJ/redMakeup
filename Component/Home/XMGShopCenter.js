@@ -30,12 +30,16 @@ import ShopCenterItem from './XMGShopCenterItem';
 
 
 export default class ShopCenter extends Component{
-    getDefaultProps(){
+/*    getDefaultProps(){
         // 回调函数
         return{
             popToHomeView: null
         }
-    };
+    };*/
+
+    static defaultProps={
+        popToHomeView: null
+    }
 
     render() {
         return (

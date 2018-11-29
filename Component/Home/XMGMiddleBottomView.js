@@ -25,21 +25,25 @@ import CommonView from './XMGMiddleCommonView';
 
 
 export default class BottomView extends Component{
-    getDefaultProps(){
+/*    getDefaultProps(){
         return{
             // 回调函数
             popTopHome: null
         }
-    };
+    };*/
+
+    static defaultProps={
+        popTopHome: null
+    }
 
     render() {
         return (
             <View style={styles.container}>
-                {/!*上部分*!/}
+                {/*上部分*/}
                 <View style={styles.topViewStyle}>
 
                 </View>
-                {/!*下部分*!/}
+                {/*下部分*/}
                 <View style={styles.bottomViewStyle}>
                     {this.renderBottomItem()}
                 </View>

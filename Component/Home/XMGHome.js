@@ -59,7 +59,7 @@ export default class Home extends Component{
                     <MiddleView />
                     {/*中间下半部分的内容*/}
                     <MiddleBottomView
-                        popTopHome={(data)=>{this.pushToDetail(data)}}
+                        popTopHome = {(data) => {this.pushToDetail(data)}}
                     />
                     {/*购物中心*/}
                     <ShopCenter
@@ -119,7 +119,7 @@ export default class Home extends Component{
     // 跳转到二级界面
     pushToDetail(data){
 
-        // alert(data);
+         //alert(data);
 
         this.props.navigator.push(
             {
